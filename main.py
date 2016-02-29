@@ -16,3 +16,4 @@ som_milieu = Sommet(0.5, h)
 
 def main():
     print("Projet en cours... Patientez...")
+
