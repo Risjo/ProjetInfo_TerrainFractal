@@ -1,0 +1,4 @@
+digraph structure(
+	sommet -> segment -> terrain;
+	image -> fond;
+	)
