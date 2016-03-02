@@ -5,8 +5,7 @@ Created on Wed Feb 10 11:41:38 2016
 @author: tilletjo
 """
 
-from segment import Segment
-from sommet import Sommet
+from paysage import Paysage
 
 #Initialisation
 som_gauche = Sommet(0, 0)
@@ -21,7 +20,7 @@ fraction = 0.5
 def main():
     nbre_coupe = input("Combien d'itération voulez-vous effectuer ? ")
     for i in nbre_coupe:
-        paysage.decoupe(fraction)
+        paysage.affine(fraction)
 
     return paysage.liste_sommets()
 
