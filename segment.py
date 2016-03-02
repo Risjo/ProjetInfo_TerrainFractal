@@ -6,7 +6,9 @@ Created on Wed Feb 10 10:32:28 2016
 """
 
 from random import random
+
 from sommet import Sommet
+
 
 class Segment:
     def __init__(self, som1, som2):
@@ -32,7 +34,7 @@ if __name__ == "__main__":
     seg2 = Segment(s1, s3)
     seg3 = Segment(s2, s3)
     print(seg1, seg2, seg3)
-    print(seg1.nouveau_sommet(1/2))
+    print(seg1.creer_sommet(1/2))
     
     
         

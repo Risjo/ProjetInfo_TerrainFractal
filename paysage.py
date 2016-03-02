@@ -1,5 +1,5 @@
 from segment import Segment
-from sommet import Sommet
+
 
 class Paysage:
     def __init__(self,som_gauche,som_milieu,som_droit):
@@ -26,6 +26,7 @@ class Paysage:
         for sommet in self.liste_sommets:
             string+= str(sommet) +"\n"
         return string
+
     def save(self, nom_fichier):
         with open(nom_fichier, 'w') as f:
             for som in self.liste_sommets:
