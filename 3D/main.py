@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from sommet import Sommet
-from paysage import Paysage
+
+#Initialisation
+
 
 def main():
-    
+    nbre_coupe = input("Combien d'itération voulez-vous effectuer ? ")
+
+    for i in range(int(nbre_coupe)):
+        paysage.affine(fraction)
+    paysage.save("paysage.gnuplot")
+
+    return True

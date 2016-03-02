@@ -5,8 +5,8 @@ Created on Wed Feb 10 11:41:38 2016
 @author: tilletjo
 """
 
-from sommet import Sommet
 from paysage import Paysage
+from sommet import Sommet
 
 #Initialisation
 som_gauche = Sommet(0, 0)
