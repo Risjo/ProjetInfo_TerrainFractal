@@ -16,12 +16,12 @@ class Segment:
         return ((self.som2.x - self.som1.x)**2 + (self.som2.h - self.som1.h)**2)**(1/2)
     def pente(self):
         return (self.som2.h - self.som1.h) / (self.som2.x - self.som1.x)
-    def nouveau_sommet(self, fraction):
+    def creer_sommet(self, fraction):
         vec = (self.som2 - self.som1).mul(fraction)
         bruit = Sommet(0, 2 * random() - 1)
         return self.som1 + vec + bruit
     def __str__(self):
-        return str(self.som1) + str(self.som2)
+        return str("Segment définit par les deux sommets suivants : ") + str(self.som1) + str(self.som2)
         
     
 if __name__ == "__main__":
