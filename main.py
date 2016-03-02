@@ -5,6 +5,7 @@ Created on Wed Feb 10 11:41:38 2016
 @author: tilletjo
 """
 
+from sommet import Sommet
 from paysage import Paysage
 
 #Initialisation
@@ -22,7 +23,8 @@ def main():
     for i in nbre_coupe:
         paysage.affine(fraction)
 
-    return paysage.liste_sommets()
+    paysage.save("paysage.gnuplot")
 
+    return True
 
-
+main()

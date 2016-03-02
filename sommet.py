@@ -19,7 +19,7 @@ class Sommet :
         assert c != 0
         return Sommet(self.x / c, self.h / c)
     def __str__(self):
-        return str("Sommet d'abscisse ", self.x, " et de hauteur ", self.h)
+        return str(self.x) + " " + str(self.h)
         
         
 if __name__ == "__main__":
