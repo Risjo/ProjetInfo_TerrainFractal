@@ -18,7 +18,7 @@ class Segment:
         return (self.som2.h - self.som1.h) / (self.som2.x - self.som1.x)
     def creer_sommet(self, fraction):
         vec = (self.som2 - self.som1).mul(fraction)
-        bruit = Sommet(0, 2 * random() - 1)
+        bruit = Sommet(0, (2 * random() - 1) * (abs(self.som2.x - self.som1.x)))
         return self.som1 + vec + bruit
     def __str__(self):
         return str("Segment définit par les deux sommets suivants : ") + str(self.som1) + str(self.som2)

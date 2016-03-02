@@ -21,6 +21,11 @@ class Paysage:
         for i in range(len(self.liste_sommets)-1):
             self.liste_segments.append(Segment(self.liste_sommets[i],self.liste_sommets[i+1]))
 
+    def __str__(self):
+        string = ""
+        for sommet in self.liste_sommets:
+            string+= str(sommet) +"\n"
+        return string
     def save(self, nom_fichier):
         with open(nom_fichier, 'w') as f:
             for som in self.liste_sommets:
