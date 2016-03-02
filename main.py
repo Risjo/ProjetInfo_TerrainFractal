@@ -11,8 +11,8 @@ from sommet import Sommet
 #Initialisation
 som_gauche = Sommet(0, 0)
 som_droit = Sommet(1, 0)
-h = 1
-som_milieu = Sommet(0.5, h)
+hauteur = 1
+som_milieu = Sommet(0.5, hauteur)
 
 def main():
     print("Projet en cours... Patientez...")
