@@ -14,6 +14,16 @@ som_droit = Sommet(1, 0)
 hauteur = 1
 som_milieu = Sommet(0.5, hauteur)
 
+paysage = Paysage(som_gauche, som_milieu, som_droit)
+
+fraction = 0.5
+
 def main():
-    print("Projet en cours... Patientez...")
+    nbre_coupe = input("Combien d'itération voulez-vous effectuer ? ")
+    for i in nbre_coupe:
+        paysage.decoupe(fraction)
+
+    return paysage.liste_sommets()
+
+
 
