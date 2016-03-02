@@ -20,11 +20,12 @@ fraction = 0.5
 
 def main():
     nbre_coupe = input("Combien d'itération voulez-vous effectuer ? ")
-    for i in nbre_coupe:
-        paysage.affine(fraction)
 
+    for i in range(int(nbre_coupe)):
+        paysage.affine(fraction)
     paysage.save("paysage.gnuplot")
 
     return True
 
 main()
+print(paysage)
