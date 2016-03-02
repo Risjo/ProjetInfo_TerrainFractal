@@ -28,4 +28,3 @@ def main():
     return True
 
 main()
-print(paysage)
