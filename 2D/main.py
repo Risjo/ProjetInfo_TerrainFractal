@@ -15,14 +15,15 @@ som_milieu = (0.5, hauteur)
 
 paysage = Paysage(som_gauche, som_milieu, som_droit)
 
+#On découpe les segments au milieu systématiquement
 fraction = 0.5
 
 def main():
     nbre_coupe = input("Combien d'itération voulez-vous effectuer ? ")
 
     for i in range(int(nbre_coupe)):
-        paysage.affine(fraction)
-    paysage.save("new_paysage.gnuplot")
+        paysage.affine(fraction) # Découpe chaque segments du paysage en deux segments
+    paysage.save("new_paysage.gnuplot") #Sauvegarde le paysage dans un fichier texte sous forme de coordonnées successives.
 
     return
 

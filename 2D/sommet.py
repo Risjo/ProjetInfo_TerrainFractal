@@ -9,7 +9,7 @@ from random import random
 
 class Sommet :
     def __init__(self, init=[]):
-        if init == []:
+        if init == []: # Créé un sommet vide.
             self.x, self.h = None, None
             self.next = None
         else:
@@ -19,7 +19,10 @@ class Sommet :
             else:
                 self.next = None
 
-    def creer_sommet(self, fraction): #self.next is not None
+    def creer_sommet(self, fraction):
+        """Créé un sommet entre self et self.next en découpant le segment à l'endroit correspondant à fraction.
+        """
+        assert self.next is not None
         abscisse_decoupe = self.x + (self.next.x - self.x) * fraction
         bruit = (2 * random() - 1) * (abs(self.next.x - self.x))
         save = self.next
