@@ -19,12 +19,27 @@ class Sommet :
             else:
                 self.next = None
 
-    def creer_sommet(self, fraction):
+    def creer_sommet(self, methode, br):
         """Créé un sommet entre self et self.next en découpant le segment à l'endroit correspondant à fraction.
         """
         assert self.next is not None
+        if methode == 1:
+            fraction = 1/2
+        elif methode == 2:
+            fraction = 1/3
+        elif methode == 3:
+            fraction = 1/5
+        elif methode == 4:
+            fraction = random()
+
         abscisse_decoupe = self.x + (self.next.x - self.x) * fraction
-        bruit = (2 * random() - 1) * (abs(self.next.x - self.x))
+
+        if br == 1 :
+            bruit = (2 * random() - 1) * (abs(self.next.x - self.x))
+        elif br == 2:
+            bruit = (2 * random() - 1) * (abs(self.next.x - self.x))**2
+        elif br == 3:
+            bruit = (2 * random() - 1) * (abs(self.next.x - self.x))**(1/2)
         save = self.next
         self.next = Sommet([(abscisse_decoupe, (self.h + self.next.h)/2 + bruit)])
         self.next.next = save

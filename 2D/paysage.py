@@ -5,12 +5,12 @@ class Paysage:
     def __init__(self, som_gauche, som_milieu, som_droit):
         self.liste_sommets = Sommet([som_gauche, som_milieu, som_droit])
 
-    def affine(self, fraction):
+    def affine(self, methode, bruit):
         """Découpe chaque segment du paysage en créant un nouveau sommet entre chaque sommet.
         """
         som = self.liste_sommets
         while som is not None and som.next is not None:
-            som.creer_sommet(fraction)
+            som.creer_sommet(methode, bruit)
             som = som.next.next
 
     def save(self, nom_fichier):
