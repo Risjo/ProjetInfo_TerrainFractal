@@ -5,30 +5,34 @@ Created on Wed Feb 10 10:23:52 2016
 @author: tilletjo
 """
 
+from random import random
+
 class Sommet :
-    def __init__(self, x, h):
-        self.x = x
-        self.h = h
-    def __add__(self, som2):
-        return Sommet(self.x + som2.x, self.h + som2.h)
-    def __sub__(self, som2):
-        return Sommet(self.x - som2.x, self.h - som2.h)
-    def mul(self, c):
-        return Sommet(self.x * c, self.h * c)
-    def div(self, c):
-        assert c != 0
-        return Sommet(self.x / c, self.h / c)
+    def __init__(self, init=[]):
+        if init == []:
+            self.x, self.h = None, None
+            self.next = None
+        else:
+            self.x, self.h = init[0]
+            if init[1:] != []:
+                self.next = Sommet(init[1:])
+            else:
+                self.next = None
+
+    def distance(self): #useless
+        return ((self.next.x - self.x)**2 + (self.next.h - self.h)**2)**(1/2)
+
+    def creer_sommet(self, fraction): #self.next is not None
+        abscisse_decoupe = self.x + (self.next.x - self.x) * fraction
+        bruit = (2 * random() - 1) * (abs(self.next.x - self.x))
+        save = self.next
+        self.next = Sommet([(abscisse_decoupe, self.h + bruit)])
+        self.next.next = save
+
     def __str__(self):
         return str(self.x) + " " + str(self.h)
-        
-        
+
+
 if __name__ == "__main__":
-    s1 = Sommet(0,0)
-    s2 = Sommet(5,-7)
-    print("s1 = " + str(s1))
-    print("s2 = " + str(s2))
-    print("s1 + s2 = " + str(s1 + s2))
-    print("s1 - s2 = " + str(s1 - s2))
-    print("s2 * 2 = " + str(s2.mul(2)))
-    print("s2 / 3 = " + str(s2.div(3)))
+    print("tests à faire")
     
