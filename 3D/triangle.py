@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from sommet import *
+from random import random
 
 class Triangle:
     def __init__(self, som1, som2, som3):
@@ -10,12 +12,12 @@ class Triangle:
         a=self.som1.dist(self.som2)
         b=self.som2.dist(self.som3)
         c=self.som3.dist(self.som1)
-        p = (a+b+c))/2
-        return ((p*(p-a)(p-b)(p-c))**(1/2))
+        p = (a+b+c)/2
+        return ((p*(p-a)*(p-b)*(p-c))**(1/2))
 
     def creer_sommet(self):
         vec = self.trouve_milieu()
-        bruit = Sommet(0, 0, (2 * random() - 1)*self.aire_projetee() )
+        bruit = Sommet(0, 0, (2 * random() - 1)*self.aire_projetee()*10 )
         nouveausommet=  vec + bruit
         triangle1 =Triangle(self.som1,self.som2,nouveausommet)
         triangle2 =Triangle(self.som1,self.som3,nouveausommet)

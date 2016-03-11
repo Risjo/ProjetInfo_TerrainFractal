@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-
+from triangle import *
+from sommet import *
 
 #Initialisation
 
 class Paysage:
-    def __init__(self,som_gauche,som_milieu,som_droit):
-        self.liste_sommets = [som_gauche,som_milieu,som_droit]
-        self.liste_triangles = [Segment(som_gauche,som_milieu),Segment(som_milieu,som_droit)]
+    def __init__(self,som1,som2,som3):
+        self.liste_sommets = [som1,som2,som3]
+        self.liste_triangles = [Triangle(som1,som2,som3)]
 
     def ajoutersommets(self):
         nouvliste_triangles = []
@@ -30,10 +31,12 @@ class Paysage:
                 f.write("\n")
 
 def main():
+    paysage = Paysage(Sommet(0,0,0),Sommet(1,0,0),Sommet(0,1,0))
     nbre_coupe = input("Combien d'itération voulez-vous effectuer ? ")
 
     for i in range(int(nbre_coupe)):
-        paysage.ajoutersommet()
+        paysage.ajoutersommets()
     paysage.save("paysage.gnuplot")
 
     return True
+main()
