@@ -20,6 +20,9 @@ class Sommet :
     def mul(self, c):
         return Sommet(self.x * c, self.y * c, self.z * c)
 
+    def dist(self,som2):
+        return ((self.x-som2.x)**2+(self.y-som2.y)**2)**(1/2) # on renvoie la distance au sol entre deux points
+
     def div(self, c):
         assert c != 0
         return Sommet(self.x / c, self.y / c, self.z / c)
