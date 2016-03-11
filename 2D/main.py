@@ -6,7 +6,6 @@ Created on Wed Feb 10 11:41:38 2016
 """
 
 from paysage import Paysage
-from sommet import Sommet
 
 #Initialisation
 som_gauche = (0, 0)

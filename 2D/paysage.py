@@ -20,7 +20,7 @@ class Paysage:
                 f.write("\n")
                 som = som.next
 
-    def __str__(self):#TODO
+    def __str__(self): #TODO
         string = ""
         for sommet in self.liste_sommets:
             string+= str(sommet) +"\n"
