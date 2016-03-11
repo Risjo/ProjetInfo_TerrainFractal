@@ -19,14 +19,11 @@ class Sommet :
             else:
                 self.next = None
 
-    def distance(self): #useless
-        return ((self.next.x - self.x)**2 + (self.next.h - self.h)**2)**(1/2)
-
     def creer_sommet(self, fraction): #self.next is not None
         abscisse_decoupe = self.x + (self.next.x - self.x) * fraction
         bruit = (2 * random() - 1) * (abs(self.next.x - self.x))
         save = self.next
-        self.next = Sommet([(abscisse_decoupe, self.h + bruit)])
+        self.next = Sommet([(abscisse_decoupe, (self.h + self.next.h)/2 + bruit)])
         self.next.next = save
 
     def __str__(self):

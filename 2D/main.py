@@ -22,7 +22,7 @@ def main():
 
     for i in range(int(nbre_coupe)):
         paysage.affine(fraction)
-    paysage.save("paysage.gnuplot")
+    paysage.save("new_paysage.gnuplot")
 
     return
 
