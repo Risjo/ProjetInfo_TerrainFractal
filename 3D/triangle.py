@@ -7,7 +7,7 @@ class Triangle:
         self.som3 = som3
 
     def aire_projetee(self):
-        TODO
+        p = (self.som1.dist(self.som2)+self.som2.dist(self.som3)+self.som3.dist(self.som1))/3
         pass
 
     def creer_sommet(self):
