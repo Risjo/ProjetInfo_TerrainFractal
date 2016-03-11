@@ -9,10 +9,10 @@ from paysage import Paysage
 from sommet import Sommet
 
 #Initialisation
-som_gauche = Sommet(0, 0)
-som_droit = Sommet(1, 0)
+som_gauche = (0, 0)
+som_droit = (1, 0)
 hauteur = 1
-som_milieu = Sommet(0.5, hauteur)
+som_milieu = (0.5, hauteur)
 
 paysage = Paysage(som_gauche, som_milieu, som_droit)
 
@@ -25,6 +25,6 @@ def main():
         paysage.affine(fraction)
     paysage.save("paysage.gnuplot")
 
-    return True
+    return
 
 main()
