@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-from sommet import *
+
+from sommet import Sommet
 from random import random
+
 class Triangle:
     def __init__(self, som1, som2, som3):
         self.som1 = som1

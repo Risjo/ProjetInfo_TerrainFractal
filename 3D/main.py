@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from paysage import Paysage
+from sommet import Sommet
 
 #Initialisation
 

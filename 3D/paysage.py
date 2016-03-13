@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from triangle import Triangle
-from sommet import Sommet
 
 
 class Paysage:
