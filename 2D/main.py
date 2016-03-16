@@ -15,8 +15,6 @@ som_milieu = (0.5, hauteur)
 
 paysage = Paysage(som_gauche, som_milieu, som_droit)
 
-#On découpe les segments au milieu systématiquement
-fraction = 0.5
 
 def main():
     print("Méthodes de découpe disponibles :")
