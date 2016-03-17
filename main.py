@@ -34,6 +34,7 @@ def main():
 
 
     paysage = Paysage(dimension, int(nbre_coupe), int(bruit), int(methode))
+    paysage.genere_decors()
 
     return
 

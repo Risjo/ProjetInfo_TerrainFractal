@@ -27,7 +27,7 @@ class Paysage(object):
             self.__cree_ciel = Cree_3D()
             self.__aj_cours = Ajoute_3D()
 
-        self.__cours_eau = None
+        self.__cours_eau = [[]]
         self.__ciel = None
 
 

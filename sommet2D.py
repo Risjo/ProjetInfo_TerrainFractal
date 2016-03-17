@@ -60,6 +60,14 @@ class Sommet2D(object) :
         self.next.next = save
         self.next.next.prev = self.next
 
+    def pente(self):
+        """Retourn la pente entre le sommet actuel et le suivant.
+        Le sommet suivant doit exister
+        """
+        assert self.next is not None
+
+        return (self.next.h - self.h) / (self.next.x - self.x)
+
     def __str__(self):
         #TODO
         """
