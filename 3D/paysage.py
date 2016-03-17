@@ -4,6 +4,7 @@ from triangle import Triangle
 
 
 class Paysage:
+    """classe principale regroupant l'ensemble des objet de la génération de terrain."""
     def __init__(self,som1,som2,som3):
         self.liste_sommets = [som1,som2,som3]
         self.liste_triangles = [Triangle(som1,som2,som3)]

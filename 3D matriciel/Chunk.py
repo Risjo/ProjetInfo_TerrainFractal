@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from numpy import *
 from random import *
 
 class Chunk(object):
@@ -26,7 +26,7 @@ class Chunk(object):
         self.filssupg= None
         self.filssupd= None
 
-    def generermillieu(self):
+    def generer_millieu(self):
         bruit = (2*random() - 1)*(1/self.taille)
         moyenne = (self.somminfd+self.somminfg+self.sommsupg+self.sommsupd)/4
         self.millieu = bruit+moyenne
@@ -43,17 +43,17 @@ class Chunk(object):
         if self.voisindroite == None:
             bruit= (2*random() - 1)*(1/self.taille)
             moyenne = (self.millieu+self.somminfd+self.sommsupd)/3
-            self.arrg=bruit+moyenne
+            self.arrd = bruit+moyenne
         else:
             bruit= (2*random() - 1)*(1/self.taille)
-            moyenne = (self.millieu+self.somminfg+self.sommsupg+self.voisingauche.milieu)/4
-            self.arrg=bruit+moyenne
+            moyenne = (self.millieu+self.somminfg+self.sommsupg+self.voisindroite.millieu)/4
+            self.arrsud = bruit+moyenne
 
     def generer_arrete_superieure(self):
         if self.voisinhaut == None:
             bruit= (2*random() - 1)*(1/self.taille)
             moyenne = (self.millieu+self.sommsupg+self.sommsupd)/3
-            self.arrg=bruit+moyenne
+            self.arrsup = bruit+moyenne
         else:
             self.arrsup= self.voisinhaut.arrinf
 
@@ -62,13 +62,31 @@ class Chunk(object):
         if self.voisinbas != None:
             bruit= (2*random() - 1)*(1/self.taille)
             moyenne = (self.somminfd+ self.somminfg+ self.voisinbas.milieu+self.millieu)/4
-            self.millieu= bruit+moyenne
+            self.arrinf= bruit+moyenne
 
         else:
             bruit= (2*random() - 1)*(1/self.taille)
             moyenne = (self.millieu+self.sommsupg+self.sommsupd)/3
-            self.arrg=bruit+moyenne
+            self.arrinf=bruit+moyenne
 
+    def generer_contour(self):
+        self.generer_arrete_g()
+        self.generer_arrete_d()
+        self.generer_arrete_superieure()
+        self.generer_arrete_inferieure()
+
+    def __str__(self):
+        matrice= full((3,3),0)
+        matrice[0][0]  =self.sommsupg
+        matrice[0][1] = self.arrsup
+        matrice[0][2] = self.sommsupd
+        matrice[1][0] = self.arrg
+        matrice[1][1] = self.millieu
+        matrice[1][2] = self.arrd
+        matrice[2][0] = self.somminfg
+        matrice[2][1] = self.arrinf
+        matrice[2][2] = self.somminfd
+        return str(matrice)
 
 
     def diviser(self):
