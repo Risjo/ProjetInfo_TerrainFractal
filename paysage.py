@@ -31,6 +31,7 @@ class Paysage(object):
         self.__ciel = None
 
 
+
     def genere_decors(self):
         """
         Ajoute un ciel et un cours d'eau au terrain actuel.
