@@ -69,13 +69,35 @@ class Sommet2D(object) :
         return (self.next.h - self.h) / (self.next.x - self.x)
 
     def __str__(self):
-        #TODO
-        """
-        :return:
+        """Retourne la chaîne de caractère contenant les deux coordonnées du sommet.
         """
         return str(self.x) + " " + str(self.h)
 
 
 if __name__ == "__main__":
-    #TODO
-    print("tests à faire")
+    som1 = Sommet2D([(1,1)])
+    som2 = Sommet2D([(0,-5), (1,-3), (3,4)])
+
+    print("som1 = " + str(som1))
+
+    print("som2 = ")
+    som = som2
+    while som is not None:
+        print(som)
+        som = som.next
+
+    print("Pente de som2 = " + str(som2.next.pente()))
+
+    print("Ajout d'un nouveau sommet à som2.next...")
+    som2.next.creer_sommet(1,1)
+
+    print("som2 = ")
+    som = som2
+    while som is not None:
+        print(som)
+        som = som.next
+
+
+
+
+

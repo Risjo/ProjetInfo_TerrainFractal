@@ -40,12 +40,14 @@ class Paysage(object):
         self.__aj_cours.ajoute(self.__terrain)
 
     def __str__(self):
-        # TODO
-        """
-        :return:
-        """
-        pass
+        return str(self.__terrain) + "\n" + str(self.__cours_eau) + "\n" + str(self.__ciel)
+
 
 if __name__ == "__main__":
-    #TODO
-    print("tests à faire")
+    paysage = Paysage('2D', 5, 1, 1)
+    print(paysage)
+
+    print("Génération des décors...")
+
+    paysage.genere_decors()
+    print(paysage)

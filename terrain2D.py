@@ -32,6 +32,7 @@ class Terrain2D(object):
             if som.h > som_max.h :
                 som_max = som
             som = som.next
+        return som_max
 
     def save(self, nom_fichier):
         """sauvegarde l'état actuel du paysage dans le fichier texte nom_fichier.
@@ -44,12 +45,24 @@ class Terrain2D(object):
                 f.write("\n")
                 som = som.next
 
-    def __str__(self): #TODO
+    def __str__(self):
         string = ""
-        for sommet in self.liste_sommets:
-            string+= str(sommet) +"\n"
+        som = self.liste_sommets
+        while som is not None :
+            string+= str(som) + "\n"
+            som = som.next
         return string
 
 if __name__ == "__main__":
-    #TODO
-    print("tests à faire")
+    terrain = Terrain2D((0,0), (1,2), (2,1))
+
+    print(terrain)
+
+    print("Sommet le plus haut : " + str(terrain.trouve_sommet_max()))
+
+    print("On affine le terrain...")
+    terrain.affine(1,1)
+
+    print(terrain)
+
+    print("Sommet le plus haut : " + str(terrain.trouve_sommet_max()))
