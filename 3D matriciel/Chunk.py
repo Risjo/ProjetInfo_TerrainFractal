@@ -83,4 +83,8 @@ class Chunk(object):
             self.filssupd.voisinhaut =self.voisinhaut.filsinfd
             self.voisinhaut.filsinfd.voisinbas= self.filssupd.voisinhaut
 
-        if self.voisinbas != None:
+        if self.voisingauche != None:
+            self.filssupg.voisingauche= self.voisingauche.filssupd
+            self.voisingauche.filssupd.voisindroite= self.filssupg
+            self.filsinfg.voisingauche=self.voisingauche.filsinfd
+            self.voisingauche.filssupd.voisindroite=self.somminfg
