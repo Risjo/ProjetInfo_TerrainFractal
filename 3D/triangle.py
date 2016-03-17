@@ -20,7 +20,7 @@ class Triangle:
     def creer_sommet(self):
         """le triangle crée un nouveau sommet en son centre. Le bruit dépend de la surface au sol du triangle"""
         vec = self.trouve_milieu()
-        bruit = Sommet(0, 0, (2 * random() - 1)*self.aire_projetee()*10 )
+        bruit = Sommet(0, 0, (2 * random() - 1)*self.aire_projetee()*1)
         nouveausommet=  vec + bruit
         triangle1 =Triangle(self.som1,self.som2,nouveausommet)
         triangle2 =Triangle(self.som1,self.som3,nouveausommet)
