@@ -22,7 +22,7 @@ class Triangle:
         vec = self.trouve_milieu()
         bruit = Sommet(0, 0, (2 * random() - 1)*self.aire_projetee()*1)
         nouveausommet=  vec + bruit
-        triangle1 =Triangle(self.som1,self.som2,nouveausommet)
+        triangle1 =Triangle(self.som1,self.som2,nouveausommet)  #On crée les traingles associé au nouveau points
         triangle2 =Triangle(self.som1,self.som3,nouveausommet)
         triangle3 =Triangle(self.som2,self.som3,nouveausommet)
         return (nouveausommet,triangle1,triangle2,triangle3) #Renvoie le sommet ainsi crée et les trois triangles fils dont il est l'un des sommets
@@ -33,5 +33,23 @@ class Triangle:
 
     def __str__(self):
         """utile au débug"""
-        return str("Triangle définit par les trois sommets suivants : ") + str(self.som1) + str(self.som2) + str(self.som3)
+        return str("triangle définit par les trois sommets suivants : ") + str(self.som1) +"   "+ str(self.som2) +"   " +str(self.som3)
 
+
+if __name__ == "__main__":
+    Sommet1 = Sommet(1,0,0)
+    Sommet2 = Sommet(0,1,0)
+    Sommet3 = Sommet(0,0,1)
+    triangle=  Triangle(Sommet1,Sommet2,Sommet3)
+    print(triangle)
+    print("aire de triangle:")
+    print(triangle.aire_projetee())
+    print("milieu de triangle:")
+    print(triangle.trouve_milieu())
+    (nouveausommet,triangle1,triangle2,triangle3)=triangle.creer_sommet()
+    print("nouveau sommet généré:")
+    print(nouveausommet)
+    print("nouveaux triangles générés:")
+    print(triangle1)
+    print(triangle2)
+    print(triangle3)

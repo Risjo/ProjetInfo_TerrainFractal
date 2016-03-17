@@ -28,10 +28,10 @@ class Sommet :
         """on renvoie la distance au sol entre deux points"""
         return ((self.x-som2.x)**2+(self.y-som2.y)**2)**(1/2)
 
-    def __div__(self, c):
-        """on définit la division avec un scalaire"""
-        assert c != 0
-        return Sommet(self.x / c, self.y / c, self.z / c)
+    # def __div__(self, c):
+    #     """on définit la division avec un scalaire"""
+    #     assert c != 0                                                 #inutile dans la génération
+    #     return Sommet(self.x / c, self.y / c, self.z / c)
 
     def __str__(self):
         """le print permet d'ecrire le texte finale et à débuguer"""
@@ -44,4 +44,4 @@ if __name__ == "__main__":
     Sommet2 = Sommet(0,1,0)
     Sommet3 = Sommet(0,0,1)
     print(Sommet1+Sommet2*3)
-    print(Sommet3-Sommet1/2)
+    print(Sommet3-Sommet1*0.5)

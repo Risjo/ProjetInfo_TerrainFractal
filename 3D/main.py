@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from paysage import Paysage
+from paysage_triangulaire import Paysage
 from sommet import Sommet
 
 #Initialisation
