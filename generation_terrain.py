@@ -42,8 +42,3 @@ class Gen_3D(GenerationTerrain):
 
     def generate(self, nb_iteration, type_bruit, type_division):
         pass
-
-
-if __name__ == "__main__":
-    #TODO
-    print("tests à faire")
