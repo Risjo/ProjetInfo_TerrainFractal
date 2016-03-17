@@ -27,13 +27,13 @@ class Chunk(object):
         self.filssupd= None
 
     def generermillieu(self):
-        bruit = (2*random.int - 1)*(1/self.taille)
+        bruit = (2*random() - 1)*(1/self.taille)
         moyenne = (self.somminfd+self.somminfg+self.sommsupg+self.sommsupd)/4
         self.millieu = bruit+moyenne
 
     def generer_arrete_g(self):
         if self.voisingauche == None:
-            bruit= (2*random.int - 1)*(1/self.taille)
+            bruit= (2*random() - 1)*(1/self.taille)
             moyenne = (self.millieu+self.somminfg+self.sommsupg)/3
             self.arrg=bruit+moyenne
         else:
@@ -41,31 +41,35 @@ class Chunk(object):
 
     def generer_arrete_d(self):
         if self.voisindroite == None:
-            bruit= (2*random.int - 1)*(1/self.taille)
+            bruit= (2*random() - 1)*(1/self.taille)
             moyenne = (self.millieu+self.somminfd+self.sommsupd)/3
             self.arrg=bruit+moyenne
         else:
-            bruit= (2*random.int - 1)*(1/self.taille)
+            bruit= (2*random() - 1)*(1/self.taille)
             moyenne = (self.millieu+self.somminfg+self.sommsupg+self.voisingauche.milieu)/4
             self.arrg=bruit+moyenne
 
     def generer_arrete_superieure(self):
         if self.voisinhaut == None:
-            bruit= (2*random.int - 1)*(1/self.taille)
+            bruit= (2*random() - 1)*(1/self.taille)
             moyenne = (self.millieu+self.sommsupg+self.sommsupd)/3
             self.arrg=bruit+moyenne
         else:
             self.arrsup= self.voisinhaut.arrinf
 
     def generer_arrete_inferieure(self):
-        if self.voisinbas == None:
-            bruit= (2*random.int - 1)*(1/self.taille)
+
+        if self.voisinbas != None:
+            bruit= (2*random() - 1)*(1/self.taille)
+            moyenne = (self.somminfd+ self.somminfg+ self.voisinbas.milieu+self.millieu)/4
+            self.millieu= bruit+moyenne
+
+        else:
+            bruit= (2*random() - 1)*(1/self.taille)
             moyenne = (self.millieu+self.sommsupg+self.sommsupd)/3
             self.arrg=bruit+moyenne
-        else:
-             bruit= (2*random.int - 1)*(1/self.taille)
-        moyenne = (self.somminfd+ self.somminfg+ self.voisinbas.milieu+self.millieu)/4
-        self.millieu= bruit+moyenne
+
+
 
     def diviser(self):
         self.filsinfd= Chunk(self.millieu,self.arrd,self.arrinf,self.somminfd,self.taille+1)

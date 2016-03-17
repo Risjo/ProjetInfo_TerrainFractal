@@ -25,14 +25,16 @@ class Paysage(object):
         matrice = full((2*(taille+1)+1, 2*(taille+1)+1), None)
         for i in range(taille):
             for j in range(taille):
-                matrice[i*2][j*2] = self.terrain[i][j].sommsupg
-                matrice[i*2][j*2+1] = self.terrain[i][j].arrsup
-                matrice[i*2+1][j*2] = self.terrain[i][j].arrg
-                matrice[i*2+1][j*2+1] = self.terrain[i][j].millieu
-            matrice[i*2][j*2+2] = self.terrain[i][j].sommsupd
-            matrice[i*2+1][j*2+2] = self.terrain[i][j].arrd
+                matrice[i*2][j*2]=self.terrain[i][j].sommsupg
+                matrice[i*2][j*2+1]=self.terrain[i][j].arrsup
+                matrice[i*2+1][j*2]= self.terrain[i][j].arrg
+                matrice[i*2+1][j*2+1]= self.terrain[i][j].millieu
+            matrice[i*2][j*2+2]= self.terrain[i][j].sommsupd
+            matrice[i*2+1][j*2+2]= self.terrain[i][j].arrd
+        print(matrice)
         for k in range(taille):
             matrice[2*taille+2][taille] = self.terrain[taille-1][k].somminfg
             matrice[2*taille+2][taille+1] = self.terrain[taille-1][k].arrinf
         matrice[2*taille+2][2*taille+2] = self.terrain[taille-1][taille-1].somminfd
+        print(matrice)
         return matrice
