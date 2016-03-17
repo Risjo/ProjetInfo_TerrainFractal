@@ -4,7 +4,7 @@ from terrain2D import Terrain2D
 from abc import ABCMeta, abstractmethod
 
 class GenerationTerrain(metaclass=ABCMeta):
-    """Classe abstraite pour les générations de terrain en 2D ou en 3D
+    """Classe abstraite pour les générations de terrain en 2D ou en 3D.
     """
 
     @abstractmethod

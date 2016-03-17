@@ -23,6 +23,16 @@ class Terrain2D(object):
             som.creer_sommet(bruit, division)
             som = som.next.next
 
+    def trouve_sommet_max(self):
+        """Retourne le sommet ayant la plus haute altitude.
+        """
+        som_max = self.liste_sommets
+        som = self.liste_sommets
+        while som is not None:
+            if som.h > som_max.h :
+                som_max = som
+            som = som.next
+
     def save(self, nom_fichier):
         """sauvegarde l'état actuel du paysage dans le fichier texte nom_fichier.
         """

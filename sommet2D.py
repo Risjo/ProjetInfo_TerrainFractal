@@ -8,10 +8,10 @@ Created on Wed Feb 10 10:23:52 2016
 from random import random
 
 class Sommet2D(object) :
-    """Classe représentant une liste (simplement) chaînée de sommets.
+    """Classe représentant une liste (doublement) chaînée de sommets.
     """
 
-    def __init__(self, init=[]):
+    def __init__(self, init=[], prev=None):
         """Créé un sommet (composé de deux coordonnées : son abscisse x et sa hauteur h).
         Si le paramètre init contient plusieurs tuples (donc plusieurs sommets), tous les sommets sont créés et sont
         chaînés entre eux dans l'ordre dans lequel ils étaient dans la liste init.
@@ -20,10 +20,12 @@ class Sommet2D(object) :
         if init == []: # Créé un sommet vide.
             self.x, self.h = None, None
             self.next = None
+            self.prev = prev
         else:
             self.x, self.h = init[0]
+            self.prev = prev
             if init[1:] != []:
-                self.next = Sommet2D(init[1:])
+                self.next = Sommet2D(init[1:], self)
             else:
                 self.next = None
 
@@ -52,9 +54,11 @@ class Sommet2D(object) :
             bruit = (2 * random() - 1) * (abs(self.next.x - self.x))**2
         elif br == 3:
             bruit = (2 * random() - 1) * (abs(self.next.x - self.x))**(1/2)
+
         save = self.next
-        self.next = Sommet2D([(abscisse_decoupe, (self.h + self.next.h)/2 + bruit)])
+        self.next = Sommet2D([(abscisse_decoupe, (self.h + self.next.h)/2 + bruit)], self)
         self.next.next = save
+        self.next.next.prev = self.next
 
     def __str__(self):
         #TODO

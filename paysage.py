@@ -13,7 +13,9 @@ class Paysage(object):
     def __init__(self, dimension, nb_iteration, type_bruit, type_division):
         """
         Constructeur du terrain. Appelle les bonnes classes en fonction de si l'on souhaite un terrain en 2D ou en 3D,
-        du nombre d'itérations, du type de bruit et de la méthoder de division.
+        du nombre d'itérations, du type de bruit et de la méthode de division.
+        Le terrain en lui-même est stocké dans self.__terrain.
+        Le cours d'eau est dans self.__cours_eau et le ciel dans self.__ciel.
         """
         if dimension == '2D':
             self.__terrain = Gen_2D().generate(nb_iteration, type_bruit, type_division)
@@ -24,6 +26,9 @@ class Paysage(object):
             self.__terrain = Gen_3D().generate(type_bruit, type_division)
             self.__cree_ciel = Cree_3D()
             self.__aj_cours = Ajoute_3D()
+
+        self.__cours_eau = None
+        self.__ciel = None
 
 
     def genere_decors(self):

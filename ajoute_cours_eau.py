@@ -19,7 +19,7 @@ class Ajoute_2D(AjouteCoursEau):
     """
 
     def ajoute(self, paysage):
-        pass
+        som_max = paysage.trouve_sommet_max()
 
 
 
