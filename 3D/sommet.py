@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Feb 10 10:23:52 2016
-
-@author: tilletjo
-"""
 
 class Sommet :
     """point de la simulation. avec une série de méthode le rendant plus facile à manipuler"""
