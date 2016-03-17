@@ -2,6 +2,7 @@ from Chunk import *
 class paysage(object):
     def __add__(self,sommsupg,sommsupd,somminfg,somminfd,taille):
         self.taille= taille
-        self.root= Chunk(sommsupg,sommsupd,somminfg,somminfd,)
+        self.root= Chunk(sommsupg,sommsupd,somminfg,somminfd,0)
+        self.terrain=[self.root]
 
 
