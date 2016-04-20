@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from math import sqrt
 
 class Point():
     
@@ -8,36 +8,55 @@ class Point():
         self.__y = y
         self.__z = z
         
-        self.__est_3D = self.__z is not None
+        self.est_3D = self.z is not None
+
+    @property
+    def x(self):
+        return self.__x
+
+    @property
+    def y(self):
+        return self.__y
+
+    @property
+    def z(self):
+        return self.__z
         
     def __add__(self, other) :
-        assert self.__est_3D == other.__est_3D
+        assert self.est_3D == other.est_3D
         
-        if self.__est_3D :
-            return Point(self.__x + other.__x, self.__y + other.__y, self.__z + other.__z)
+        if self.est_3D :
+            return Point(self.x + other.x, self.y + other.y, self.z + other.z)
         else :
-            return Point(self.__x + other.__x, self.__y + other.__y)
+            return Point(self.x + other.x, self.y + other.y)
             
     def __sub__(self, other) :
-        assert self.__est_3D == other.__est_3D
+        assert self.est_3D == other.est_3D
         
-        if self.__est_3D :
-            return Point(self.__x - other.__x, self.__y - other.__y, self.__z - other.__z)
+        if self.est_3D :
+            return Point(self.x - other.x, self.y - other.y, self.z - other.z)
         else :
-            return Point(self.__x - other.__x, self.__y - other.__y)
+            return Point(self.x - other.x, self.y - other.y)
     
     def __mul__(self, const) :
-        if self.__est_3D :
-            return Point(self.__x * const, self.__y * const, self.__z * const)
+        if self.est_3D :
+            return Point(self.x * const, self.y * const, self.z * const)
         else :
-            return Point(self.__x * const, self.__y * const)
+            return Point(self.x * const, self.y * const)
+
+    def distance(self, other):
+        assert self.est_3D == other.est_3D
+        if self.est_3D :
+            return sqrt((self.x-other.x)**2 + (self.y-other.y)**2 + (self.z-other.z)**2 )
+        else :
+            return sqrt((self.x-other.x)**2 + (self.y-other.y)**2)
             
         
     def __str__(self):
-        if self.__est_3D :
-            return str(self.__x) + ' ' + str(self.__y) + ' ' + str(self.__z)
+        if self.est_3D :
+            return str(self.x) + ' ' + str(self.y) + ' ' + str(self.z)
         else :
-            return str(self.__x) + ' ' + str(self.__y)
+            return str(self.x) + ' ' + str(self.y)
             
             
 
@@ -52,10 +71,16 @@ if __name__ == "__main__":
     print('p2 = ' + str(p2))
     print('p3 = ' + str(p3))
     print('p4 = ' + str(p4))
+    print()
+
+    print('p1 est 3D ? ' + str(p1.est_3D))
+    print('p3 est 3D ? ' + str(p3.est_3D))
+    print()
     
     print('p1 + p2 = ' + str(p1 + p2))
     print('p1 - p2 = ' + str(p1 - p2))
     print('p1 * 3 = ' + str(p1 * 3))
+    print()
     
     print('p3 + p4 = ' + str(p3 + p4))
     print('p3 - p4 = ' + str(p3 - p4))
