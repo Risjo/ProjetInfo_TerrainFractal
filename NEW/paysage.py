@@ -99,3 +99,6 @@ if __name__ == "__main__":
     for f in terrain.liste_sous_facettes():
         print(f)
     terrain.save('test2')
+
+    terrain.ajoute_cours_eau()
+    print(terrain.cours_eau)
