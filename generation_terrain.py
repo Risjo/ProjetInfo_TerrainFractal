@@ -4,20 +4,21 @@ from terrain2D import Terrain2D
 from abc import ABCMeta, abstractmethod
 
 class GenerationTerrain(metaclass=ABCMeta):
-    """Com
+    """Classe abstraite pour les générations de terrain en 2D ou en 3D.
     """
+
     @abstractmethod
     def generate(self, nb_iteration, type_bruit, type_division):
-        """
-        :return:
+        """Créé un terrain en fonction du nombre d'itération, du type de bruit et de la méthode de découpe.
+        Le terrain est sauvegardé dans un fichier .gnuplot.
         """
         pass
 
 
 class Gen_2D(GenerationTerrain):
+    """Génération du terrain en 2D.
     """
 
-    """
     def generate(self, nb_iteration, type_bruit, type_division):
         #Initialisation
         som_gauche = (0, 0)
@@ -36,9 +37,8 @@ class Gen_2D(GenerationTerrain):
 
 
 class Gen_3D(GenerationTerrain):
+    """Génération du terrain en 3D.
     """
 
-    """
     def generate(self, nb_iteration, type_bruit, type_division):
         pass
-

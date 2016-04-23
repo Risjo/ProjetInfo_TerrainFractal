@@ -3,11 +3,12 @@
 from abc import ABCMeta, abstractmethod
 
 class CreationCiel(metaclass=ABCMeta):
+    #TODO
     """
 
     """
     @abstractmethod
-    def creer(self, type_ciel, paysage):
+    def creer(self, paysage):
         """
         :return:
         """
