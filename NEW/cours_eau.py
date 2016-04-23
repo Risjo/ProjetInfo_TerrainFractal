@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+
+class CoursEau():
+    def __init__(self, start, paysage):
+        self.points = [start]
+        self.paysage = paysage
+
+    def coule(self):
+        if self.points[0].est_3D :
+            pass
+
+        else : #2D
+            point_act = self.points[-1]
+            vois1, vois2 = self.paysage.trouves_voisins(point_act)
+            if point_act.y > vois1.y and point_act.y > vois2.y:
+                if point_act.y - vois1.y > point_act.y - vois2.y :
+                    self.points.append(vois1)
+                else:
+                    self.points.append(vois2)
+                self.coule()
+            elif point_act.y > vois1.y:
+                self.points.append(vois1)
+                self.coule()
+            elif point_act.y > vois2.y:
+                self.points.append(vois2)
+                self.coule()
+
+    def __str__(self):
+        return str(self.points)

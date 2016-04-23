@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from facette import Facette
 from point import Point
+from cours_eau import CoursEau
 
 class Paysage():
     def __init__(self, facette = None):
         self.racine = facette
+        self.cours_eau = []
 
     def liste_sous_facettes(self):
         """retourne la liste des facettes qui sont le plus profond dans l'arbre."""
@@ -40,6 +42,33 @@ class Paysage():
                 for coord in point:
                     texte += str(coord) + ' '
                 f.write(texte + '\n')
+
+    def trouve_voisins(self, point):
+        if point.est_3D:
+            pass
+
+        else :
+            vois1 = self.racine.liste_points[0]
+            vois2 = self.racine.liste_points[-1]
+            for f in self.liste_sous_facettes():
+                for p in f.liste_points:
+                    if p.x < point.x and abs(point.x - p.x) < abs(point.x - vois1.x):
+                        vois1 = p
+                    elif p.x > point.x and abs(point.x - p.x) < abs(point.x - vois1.x):
+                        vois2 = p
+            return vois1, vois2
+
+    def ajoute_cours_eau(self, start = None):
+        if start is None:
+            start = self.racine.liste_points[0]
+            for f in self.liste_sous_facettes():
+                for p in f.liste_points:
+                    if p.est_3D and p.z > start.z :
+                        start = p
+                    elif (not p.est_3D) and p.y > start.y:
+                        start = p
+
+        self.cours_eau.append(CoursEau(start, self).coule())
 
 
 if __name__ == "__main__":

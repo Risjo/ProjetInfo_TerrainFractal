@@ -3,10 +3,11 @@ from point import Point
 from random import random
 
 class Facette():
-    def __init__(self, liste_points) :
+    def __init__(self, liste_points, pere = None) :
         self.liste_points = liste_points
         self.__nb_points = len(liste_points)
         self.fils = []
+        self.pere = pere
 
     def trouve_milieu(self, fraction):
         """Retourne le milieu de la facette"""
@@ -47,11 +48,11 @@ class Facette():
         milieu += bruit
         if self.__nb_points == 2:
             for f in self.liste_points:
-                self.fils.append(Facette([f, milieu]))
+                self.fils.append(Facette([f, milieu], self))
 
         else:
             for i in range(self.__nb_points - 1):
-                self.fils.append(Facette([self.liste_points[i], self.liste_points[i+1], milieu]))
+                self.fils.append(Facette([self.liste_points[i], self.liste_points[i+1], milieu], self))
 
     def __str__(self):
         texte = "Facette constituée des points \n"
