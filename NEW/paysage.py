@@ -29,6 +29,7 @@ class Paysage():
 
     def save(self, nom_fichier):
         with open(nom_fichier, 'w') as f:
+            f.write(str(self.cours_eau))
             ensemble = set()
             for facette in terrain.liste_sous_facettes():
                 for p in facette.liste_points:
