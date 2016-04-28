@@ -29,7 +29,7 @@ class Paysage():
 
     def save(self, nom_fichier):
         with open(nom_fichier, 'w') as f:
-            f.write(str(self.cours_eau))
+            f.write(str([str(cours) for cours in self.cours_eau]) + '\n')
             ensemble = set()
             for facette in terrain.liste_sous_facettes():
                 for p in facette.liste_points:
@@ -69,7 +69,9 @@ class Paysage():
                     elif (not p.est_3D) and p.y > start.y:
                         start = p
 
-        self.cours_eau.append(CoursEau(start, self).coule())
+        cours = CoursEau(start, self)
+        cours.coule()
+        self.cours_eau.append(cours)
 
 
 if __name__ == "__main__":
@@ -84,22 +86,22 @@ if __name__ == "__main__":
 
     for f in terrain.liste_sous_facettes():
         print(f)
+
+    terrain.ajoute_cours_eau()
     terrain.save('test')
 
 
-    p1 = Point(0,0,0)
-    p2 = Point(1,0,0)
-    p3 = Point(0,1,0)
-    p4 = Point(1,1,0)
-    base = Facette([p1, p2, p3, p4])
-    terrain = Paysage(base)
-    print(terrain)
-    for i in range(8):
-        terrain.itere(1)
+    # p1 = Point(0,0,0)
+    # p2 = Point(1,0,0)
+    # p3 = Point(0,1,0)
+    # p4 = Point(1,1,0)
+    # base = Facette([p1, p2, p3, p4])
+    # terrain = Paysage(base)
+    # print(terrain)
+    # for i in range(8):
+    #     terrain.itere(1)
+    #
+    # for f in terrain.liste_sous_facettes():
+    #     print(f)
+    # terrain.save('test2')
 
-    for f in terrain.liste_sous_facettes():
-        print(f)
-    terrain.save('test2')
-
-    terrain.ajoute_cours_eau()
-    print(terrain.cours_eau)

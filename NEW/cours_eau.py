@@ -11,7 +11,7 @@ class CoursEau():
 
         else : #2D
             point_act = self.points[-1]
-            vois1, vois2 = self.paysage.trouves_voisins(point_act)
+            vois1, vois2 = self.paysage.trouve_voisins(point_act)
             if point_act.y > vois1.y and point_act.y > vois2.y:
                 if point_act.y - vois1.y > point_act.y - vois2.y :
                     self.points.append(vois1)
@@ -26,4 +26,4 @@ class CoursEau():
                 self.coule()
 
     def __str__(self):
-        return str(self.points)
+        return str([str(p) for p in self.points])
