@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="generer_bouton">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -23,14 +23,17 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lance la génération du terrain.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="text">
-     <string>Créer</string>
+     <string>Générer</string>
     </property>
    </widget>
    <widget class="QSlider" name="Fraction">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>500</x>
       <y>570</y>
       <width>171</width>
       <height>22</height>
@@ -56,21 +59,37 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>200</x>
       <y>530</y>
-      <width>51</width>
+      <width>111</width>
       <height>80</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="Dimensions">
      <item>
+      <widget class="QLabel" name="nb_dim_terrain">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Indique si l'on désire générer un terrain en deux dimensions ou en trois dimensions.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="text">
+        <string>Dimension du terrain :</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::RichText</enum>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
       <widget class="QRadioButton" name="deuxD">
        <property name="text">
         <string>2D</string>
        </property>
       </widget>
      </item>
-     <item>
+     <item alignment="Qt::AlignHCenter">
       <widget class="QRadioButton" name="troisD">
        <property name="text">
         <string>3D</string>
@@ -82,15 +101,25 @@
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>320</x>
       <y>530</y>
       <width>160</width>
-      <height>80</height>
+      <height>84</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QLabel" name="type_bruit">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pour la génération de terrain en 2D. Indique si le bruit généré (valeur aléatoire) dépend directement de la longueur du segment concerné (bruit linéaire) ou s'il dépend du carré ou de la racine de cette longueur.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>Type de bruit :</string>
+       </property>
+      </widget>
+     </item>
      <item>
-      <widget class="QRadioButton" name="radioButton_4">
+      <widget class="QRadioButton" name="bruit_lin">
        <property name="cursor">
         <cursorShape>ArrowCursor</cursorShape>
        </property>
@@ -100,7 +129,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton_5">
+      <widget class="QRadioButton" name="bruit_racine">
        <property name="cursor">
         <cursorShape>ArrowCursor</cursorShape>
        </property>
@@ -110,7 +139,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton_3">
+      <widget class="QRadioButton" name="bruit_quadra">
        <property name="cursor">
         <cursorShape>ArrowCursor</cursorShape>
        </property>
@@ -131,23 +160,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QFrame" name="frame">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>741</width>
-      <height>481</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="nb_iteration">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -156,34 +169,40 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ce nombre correspond au nombre de fois chaque partie du terrain est redécoupée. &lt;/p&gt;&lt;p&gt;Plus ce nombre est grand, meilleur sera la définition.&lt;/p&gt;&lt;p&gt; Attention cependant, un nombre trop grand demandera beaucoup de temps de calcul.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="text">
      <string>Nombre d'itérations:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="val_frac">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>510</x>
       <y>550</y>
       <width>71</width>
       <height>16</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pour la génération en 2D, à chaque itération, chaque segment est découpé en deux.&lt;/p&gt;&lt;p&gt;La valeur de la fraction indique où cette découpe à lieu (0.5 correspondant au mileu du segment).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="text">
      <string>Valeur fraction:</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QTextBrowser" name="val_fraction">
     <property name="geometry">
      <rect>
-      <x>500</x>
+      <x>590</x>
       <y>540</y>
       <width>51</width>
       <height>31</height>
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="ajouter_cours_bouton">
     <property name="geometry">
      <rect>
       <x>770</x>
@@ -193,14 +212,14 @@
      </rect>
     </property>
     <property name="text">
-     <string>ajouter cours d'eau</string>
+     <string>Ajouter cours d'eau</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QCheckBox" name="Afficher_ciel">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>380</y>
+      <x>780</x>
+      <y>240</y>
       <width>81</width>
       <height>17</height>
      </rect>
@@ -209,7 +228,7 @@
      <string>Afficher ciel</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_2">
+   <widget class="QCheckBox" name="Afficher_cours_eau">
     <property name="geometry">
      <rect>
       <x>920</x>
@@ -220,6 +239,16 @@
     </property>
     <property name="text">
      <string>Afficher cours d'eau</string>
+    </property>
+   </widget>
+   <widget class="MatplotlibWidget" name="matplotlib">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>9</y>
+      <width>741</width>
+      <height>501</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -292,6 +321,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MatplotlibWidget</class>
+   <extends>QWidget</extends>
+   <header>matplotlibwidget</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
