@@ -18,11 +18,11 @@ class Paysage():
                 liste += Paysage(f).liste_sous_facettes()
             return liste
 
-    def itere(self, puiss):
+    def itere(self, puiss, frac):
         """Augmente la profondeur de l'arbre de 1 en divisant toutes les facettes de profondeur maximum en
         sous-facettes."""
         for f in self.liste_sous_facettes():
-            f.subdivise(puiss)
+            f.subdivise(puiss, frac)
 
     def __str__(self):
         return "Arbre dont la racine est : " + str(self.racine)
@@ -82,10 +82,11 @@ if __name__ == "__main__":
     terrain = Paysage(base)
     print(terrain)
     for i in range(8):
-        terrain.itere(1)
+        terrain.itere(1, 0.5)
 
     for f in terrain.liste_sous_facettes():
         print(f)
+
 
     terrain.ajoute_cours_eau()
     terrain.save('test')

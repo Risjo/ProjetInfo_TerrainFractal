@@ -10,7 +10,7 @@ class Facette():
         self.pere = pere
 
     def trouve_milieu(self, fraction):
-        """Retourne le milieu de la facette"""
+        """Retourne le 'milieu' de la facette (en fonction de la valeur de la fraction pour la 2D)"""
         if self.liste_points[0].est_3D :
             milieu = Point(0, 0, 0)
             for p in self.liste_points:
@@ -18,13 +18,13 @@ class Facette():
             milieu *= 1 / self.__nb_points
 
         else :
-            milieu = (self.liste_points[0] + self.liste_points[1] ) * fraction
+            milieu = abs((self.liste_points[1] - self.liste_points[0])) * fraction + self.liste_points[0].min(self.liste_points[1])
 
         return milieu
 
 
     def distance_caracteristique(self):
-        max = self.liste_points[0].distance(self.liste_points[-1])
+        max = self.liste_points[0].distance(self.liste_points[1])
         for i in range(self.__nb_points - 1):
             dist = self.liste_points[i].distance(self.liste_points[i+1])
             if dist > max :
@@ -41,11 +41,14 @@ class Facette():
         """
         milieu = self.trouve_milieu(fraction)
         dist_carac = self.distance_caracteristique()
+        print(milieu, dist_carac)
         if milieu.est_3D:
-            bruit = Point(0, 0, 0.5 * random() * dist_carac**puiss)
+            bruit = Point(0, 0, (random()-0.5) * dist_carac**puiss)
         else :
-            bruit = Point(0, 0.5 * random() * dist_carac**puiss)
+            bruit = Point(0, (random()-0.5) * dist_carac**puiss)
+
         milieu += bruit
+
         if self.__nb_points == 2:
             for f in self.liste_points:
                 self.fils.append(Facette([f, milieu], self))
@@ -59,4 +62,17 @@ class Facette():
         for p in self.liste_points :
             texte += str(p) + "\n"
         return texte
+
+if __name__ == "__main__":
+    f = Facette([Point(0,0), Point(1,0)])
+    print(f)
+    print(f.trouve_milieu(0.7))
+    print(f.distance_caracteristique())
+    f.subdivise(1,0.7)
+    for fils in f.fils:
+        fils.subdivise(1,0.7)
+
+    for fils in f.fils:
+        for fi in fils.fils:
+            print(fi)
 

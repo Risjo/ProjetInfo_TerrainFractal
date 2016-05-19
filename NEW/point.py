@@ -44,12 +44,27 @@ class Point():
         else :
             return Point(self.x * const, self.y * const)
 
+    def __abs__(self):
+        if self.est_3D :
+            return Point(abs(self.x), abs(self.y), abs(self.z))
+        else :
+            return Point(abs(self.x), abs(self.y))
+
+    def min(self, other):
+        """Retourne le point qui a la plus petite abscisse"""
+        if self.x <= other.x:
+            return self
+        else:
+            return other
+
     def distance(self, other):
+        """Calcule la distance euclidienne entre deux points, mais ne prend pas en compte l'altitude du point,
+        car seul la distance au sol nous importe ici."""
         assert self.est_3D == other.est_3D
         if self.est_3D :
-            return sqrt((self.x-other.x)**2 + (self.y-other.y)**2 + (self.z-other.z)**2 )
-        else :
             return sqrt((self.x-other.x)**2 + (self.y-other.y)**2)
+        else :
+            return abs(self.x-other.x)
             
         
     def __str__(self):
