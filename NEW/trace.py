@@ -38,4 +38,4 @@ def trace(terrain):
                                                                # croissant des abscisses.
         plt.plot(X,Y)
 
-    return plt, X, Y, Z
+    return X, Y, Z

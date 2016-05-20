@@ -3,6 +3,7 @@
 from interface import Ui_MainWindow
 import sys
 from PyQt4 import QtGui, QtCore
+from matplotlib.figure import Figure
 from paysage import *
 from trace import trace
 # from point import Point
@@ -19,6 +20,9 @@ class MonAppli(QtGui.QMainWindow):
         self.fraction = 0.5
         self.puiss = 1
         self.terrain = None
+        self.figure = Figure() #figsize=(width, height), dpi=dpi
+        self.axes = self.figure.add_subplot(111)
+
 
         # Configuration de l'interface utilisateur.
         self.ui = Ui_MainWindow()
@@ -88,12 +92,20 @@ class MonAppli(QtGui.QMainWindow):
         for i in range(self.nb_iter):
             self.terrain.itere(self.puiss, self.fraction)
 
-        fig = trace(self.terrain)[0]
+        X, Y, Z = trace(self.terrain)
         # fig.show()
 
         self.ui.matplotlib.axes.clear()
-        self.ui.matplotlib.axes.plot(trace(self.terrain)[1],trace(self.terrain)[2],'r-')
-        self.ui.matplotlib.draw()
+        if len(Z) < 1 :
+            self.axes = self.figure.add_subplot(111)
+            self.ui.matplotlib.axes.plot(X,Y,'r-')
+            self.ui.matplotlib.draw()
+        else :
+            self.axes = self.figure.add_subplot(111, projection='3d')
+            self.ui.matplotlib.axes.plot_trisurf(X, Y, Z)
+            self.ui.matplotlib.draw()
+
+
 
     def quit(self):
         exit(0)
