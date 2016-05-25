@@ -18,7 +18,7 @@ class Facette():
             milieu *= 1 / self.__nb_points
 
         else :
-            milieu = abs((self.liste_points[1] - self.liste_points[0])) * fraction + self.liste_points[0].min(self.liste_points[1])
+            milieu = (self.liste_points[1].max(self.liste_points[0]) - self.liste_points[1].min(self.liste_points[0])) * fraction + self.liste_points[0].min(self.liste_points[1])
 
         return milieu
 
@@ -41,7 +41,6 @@ class Facette():
         """
         milieu = self.trouve_milieu(fraction)
         dist_carac = self.distance_caracteristique()
-        print(milieu, dist_carac)
         if milieu.est_3D:
             bruit = Point(0, 0, (random()-0.5) * dist_carac**puiss)
         else :

@@ -6,9 +6,10 @@ from PyQt4 import QtGui, QtCore
 from matplotlib.figure import Figure
 from paysage import *
 from trace import trace
+from numpy import array
 # from point import Point
 # from facette import Facette
-# from cours_eau import CoursEau
+#from cours_eau import CoursEau
 from matplotlib.pyplot import show
 
 class MonAppli(QtGui.QMainWindow):
@@ -22,6 +23,7 @@ class MonAppli(QtGui.QMainWindow):
         self.terrain = None
         self.figure = Figure() #figsize=(width, height), dpi=dpi
         self.axes = self.figure.add_subplot(111)
+        self.cours_eau = None
 
 
         # Configuration de l'interface utilisateur.
@@ -40,6 +42,8 @@ class MonAppli(QtGui.QMainWindow):
 
         QtCore.QObject.connect(self.ui.val_fraction, QtCore.SIGNAL("valueChanged(double)"), self.change_val_doubleSpin)
         QtCore.QObject.connect(self.ui.Fraction, QtCore.SIGNAL("valueChanged(int)"), self.change_position_slider)
+
+        QtCore.QObject.connect(self.ui.ajouter_cours_bouton,QtCore.SIGNAL("clicked()"),self.ajoute_cours)
 
 
     def change_position_slider(self, path):
@@ -73,6 +77,18 @@ class MonAppli(QtGui.QMainWindow):
     def troisDim(self):
         pass
 
+    def ajoute_cours(self):
+        if self.terrain is None :
+            pass
+        else :
+            self.terrain.ajoute_cours_eau()
+            cours = self.terrain.cours_eau[-1].points
+            for i in range(len(cours)):
+                cours[i] = (cours[i].x, cours[i].y)
+            X, Y = array(cours).T
+            self.ui.matplotlib.axes.plot(X,Y,'bd')
+            self.ui.matplotlib.draw()
+
 
     def generer(self):
         if self.trois_D :
@@ -99,6 +115,7 @@ class MonAppli(QtGui.QMainWindow):
         if len(Z) < 1 :
             self.axes = self.figure.add_subplot(111)
             self.ui.matplotlib.axes.plot(X,Y,'r-')
+            self.ui.matplotlib.axes.hold(True)
             self.ui.matplotlib.draw()
         else :
             self.axes = self.figure.add_subplot(111, projection='3d')

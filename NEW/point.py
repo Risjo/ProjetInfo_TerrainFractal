@@ -57,6 +57,13 @@ class Point():
         else:
             return other
 
+    def max(self, other):
+        """Retourne le point qui a la plus grande abscisse"""
+        if self.x <= other.x:
+            return other
+        else:
+            return self
+
     def distance(self, other):
         """Calcule la distance euclidienne entre deux points, mais ne prend pas en compte l'altitude du point,
         car seul la distance au sol nous importe ici."""
