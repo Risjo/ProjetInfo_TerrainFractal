@@ -55,7 +55,7 @@ class Paysage():
                 for p in f.liste_points:
                     if p.x < point.x and abs(point.x - p.x) < abs(point.x - vois1.x):
                         vois1 = p
-                    elif p.x > point.x and abs(point.x - p.x) < abs(point.x - vois1.x):
+                    elif p.x > point.x and abs(point.x - p.x) < abs(point.x - vois2.x):
                         vois2 = p
             return vois1, vois2
 

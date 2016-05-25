@@ -10,6 +10,7 @@ class CoursEau():
             pass
 
         else : #2D
+            tolerance = 0.05
             point_act = self.points[-1]
             vois1, vois2 = self.paysage.trouve_voisins(point_act)
             if point_act.y > vois1.y and point_act.y > vois2.y:

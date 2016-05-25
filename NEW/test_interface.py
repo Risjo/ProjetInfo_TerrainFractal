@@ -86,7 +86,7 @@ class MonAppli(QtGui.QMainWindow):
             for i in range(len(cours)):
                 cours[i] = (cours[i].x, cours[i].y)
             X, Y = array(cours).T
-            self.ui.matplotlib.axes.plot(X,Y,'bd')
+            self.ui.matplotlib.axes.plot(X,Y,'b-')
             self.ui.matplotlib.draw()
 
 
