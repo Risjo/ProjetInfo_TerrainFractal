@@ -135,7 +135,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Génération de terrain fractal", None))
         self.generer_bouton.setToolTip(_translate("MainWindow", "<html><head/><body><p>Lance la génération du terrain.</p></body></html>", None))
         self.generer_bouton.setText(_translate("MainWindow", "Générer", None))
         self.nb_dim_terrain.setToolTip(_translate("MainWindow", "<html><head/><body><p>Indique si l\'on désire générer un terrain en deux dimensions ou en trois dimensions.</p></body></html>", None))
