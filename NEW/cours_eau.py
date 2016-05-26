@@ -12,9 +12,10 @@ class CoursEau():
             pass
 
         else : #2D
-            tolerance = 0.0001
+            tolerance = 0.0 #Provoque des erreurs de dépassement de limite de récursion
             point_act = self.points[-1]
             vois1, vois2 = self.paysage.trouve_voisins(point_act)
+
             if point_act.y > vois1.y - tolerance and point_act.y > vois2.y - tolerance:
                 if point_act.y - vois1.y > point_act.y - vois2.y :
                     self.points.append(vois1)

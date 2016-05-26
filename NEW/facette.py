@@ -42,7 +42,7 @@ class Facette():
         milieu = self.trouve_milieu(fraction)
         dist_carac = self.distance_caracteristique()
         if milieu.est_3D:
-            bruit = Point(0, 0, (random()-0.5) * dist_carac**puiss)
+            bruit = Point(0, 0, 0.8*(random()-0.5) * dist_carac**puiss)
         else :
             bruit = Point(0, (random()-0.5) * dist_carac**puiss)
 
@@ -55,6 +55,7 @@ class Facette():
         else:
             for i in range(self.__nb_points - 1):
                 self.fils.append(Facette([self.liste_points[i], self.liste_points[i+1], milieu], self))
+            self.fils.append(Facette([self.liste_points[0], self.liste_points[-1], milieu], self))
 
     def __str__(self):
         texte = "Facette constituée des points \n"

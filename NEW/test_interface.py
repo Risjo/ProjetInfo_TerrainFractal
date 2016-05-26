@@ -3,6 +3,7 @@
 from interface import Ui_MainWindow
 import sys
 from PyQt4 import QtGui, QtCore
+from matplotlib import cm
 from matplotlib.figure import Figure
 from paysage import *
 from trace import trace
@@ -21,10 +22,8 @@ class MonAppli(QtGui.QMainWindow):
         self.fraction = 0.5
         self.puiss = 1
         self.terrain = None
-        self.figure = Figure() #figsize=(width, height), dpi=dpi
-        self.axes = self.figure.add_subplot(111)
+        self.figure2D = self.figure3D = Figure() #figsize=(width, height), dpi=dpi
         self.cours_eau = None
-
 
         # Configuration de l'interface utilisateur.
         self.ui = Ui_MainWindow()
@@ -86,7 +85,7 @@ class MonAppli(QtGui.QMainWindow):
             for i in range(len(cours)):
                 cours[i] = (cours[i].x, cours[i].y)
             X, Y = array(cours).T
-            self.ui.matplotlib.axes.plot(X,Y,'b-')
+            self.ui.matplotlib.axes.plot(X,Y,'b-', linewidth=2.0)
             self.ui.matplotlib.draw()
 
 
@@ -94,8 +93,8 @@ class MonAppli(QtGui.QMainWindow):
         if self.trois_D :
             p1 = Point(0,0,0)
             p2 = Point(1,0,0)
-            p3 = Point(0,1,0)
-            p4 = Point(1,1,0)
+            p3 = Point(1,1,0)
+            p4 = Point(0,1,0)
             base = Facette([p1, p2, p3, p4])
             self.terrain = Paysage(base)
         else :
@@ -109,17 +108,19 @@ class MonAppli(QtGui.QMainWindow):
             self.terrain.itere(self.puiss, self.fraction)
 
         X, Y, Z = trace(self.terrain)
-        # fig.show()
 
         self.ui.matplotlib.axes.clear()
-        if len(Z) < 1 :
-            self.axes = self.figure.add_subplot(111)
+
+        if len(Z) < 1 : #2D
+            self.axes2D = self.figure2D.add_subplot(111)
             self.ui.matplotlib.axes.plot(X,Y,'r-')
             self.ui.matplotlib.axes.hold(True)
             self.ui.matplotlib.draw()
-        else :
-            self.axes = self.figure.add_subplot(111, projection='3d')
-            self.ui.matplotlib.axes.plot_trisurf(X, Y, Z)
+        else : #3D
+            self.axes3D = self.figure3D.gca(projection='3d') #self.axes = self.figure.add_subplot(111, projection='3d')
+            self.axes3D.set_axis_off()
+            self.axes3D.plot_surface(X, Y, Z, cmap=cm.ocean) #ou terrain
+            show()
             self.ui.matplotlib.draw()
 
 
