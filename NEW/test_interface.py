@@ -117,6 +117,7 @@ class MonAppli(QtGui.QMainWindow):
             self.ui.matplotlib.axes.hold(True)
             self.ui.matplotlib.draw()
         else : #3D
+            self.axes2D = None
             self.axes3D = self.figure3D.gca(projection='3d') #self.axes = self.figure.add_subplot(111, projection='3d')
             self.axes3D.set_axis_off()
             self.axes3D.plot_surface(X, Y, Z, cmap=cm.ocean) #ou terrain
