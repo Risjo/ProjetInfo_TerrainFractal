@@ -113,8 +113,6 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.actionOuvrir = QtGui.QAction(MainWindow)
         self.actionOuvrir.setObjectName(_fromUtf8("actionOuvrir"))
-        self.actionEnregistrer = QtGui.QAction(MainWindow)
-        self.actionEnregistrer.setObjectName(_fromUtf8("actionEnregistrer"))
         self.actionQuitter = QtGui.QAction(MainWindow)
         self.actionQuitter.setObjectName(_fromUtf8("actionQuitter"))
         self.actionAjouter_Ciel = QtGui.QAction(MainWindow)
@@ -122,7 +120,6 @@ class Ui_MainWindow(object):
         self.actionAjouter_cours_d_eau = QtGui.QAction(MainWindow)
         self.actionAjouter_cours_d_eau.setObjectName(_fromUtf8("actionAjouter_cours_d_eau"))
         self.menuFichier.addAction(self.actionOuvrir)
-        self.menuFichier.addAction(self.actionEnregistrer)
         self.menuFichier.addAction(self.actionQuitter)
         self.menubar.addAction(self.menuFichier.menuAction())
 
@@ -155,8 +152,6 @@ class Ui_MainWindow(object):
         self.menuFichier.setTitle(_translate("MainWindow", "Fichier", None))
         self.actionOuvrir.setText(_translate("MainWindow", "Ouvrir", None))
         self.actionOuvrir.setShortcut(_translate("MainWindow", "Ctrl+O", None))
-        self.actionEnregistrer.setText(_translate("MainWindow", "Enregistrer", None))
-        self.actionEnregistrer.setShortcut(_translate("MainWindow", "Ctrl+S", None))
         self.actionQuitter.setText(_translate("MainWindow", "Quitter", None))
         self.actionQuitter.setShortcut(_translate("MainWindow", "Ctrl+Q", None))
 
